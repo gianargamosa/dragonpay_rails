@@ -1,8 +1,6 @@
 # Dragonpay API Integration
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dragonpay_rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Dragonpay provides an alternative channel for purchasing goods or services from the Internet. This was used for production transaction of some internal projects in my current company.
 
 ## Installation
 
@@ -22,7 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# config/initializers/dragonpay_payment.rb
+
+DragonpayRails.configure do |config|
+  config.merchant_id = 'your_merchant_id'
+  config.secret_key = 'your_secret_key'
+end
+```
+
+## Usage
+
+```ruby
+  @payment = DragonpayRails::Merchant.new(
+    amount: '1500.00',
+    ccy: 'PHP',
+    description: 'Example Payment',
+    email: 'examplepayment@payment.com'
+  )
+  
+  @payment.pay
+```
 
 ## Development
 
